@@ -1,0 +1,4 @@
+This guide provides detailed instructions for setting up a cybersecurity-focused home lab environment. 
+The project is designed to include a SOAR platform, a SIEM, and a log management system, all working together to monitor an Active Directory computer and a paired machine on the same network. 
+The setup is divided into multiple parts, which should be followed sequentially to ensure proper connectivity and integration across all components. 
+AWS will be used as the hosting platform for this lab. While the AWS free tier may not fully support the entire setup, it can be completed in short sprints to generate log data at a relatively low cost.
