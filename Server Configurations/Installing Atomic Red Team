@@ -1,0 +1,30 @@
+Start Windows PowerShell as Administrator
+
+Run the following command:
+PowerShell
+Copy code
+Set-ExecutionPolicy Bypass -Scope CurrentUser
+Confirm by typing Yes.
+Set Privileges/Exceptions for the C:/ Drive
+
+Open Windows Security.
+Go to Virus & Threat Protection.
+Click on Manage Settings.
+Under Exclusions, do the following:
+Select Add or Remove Exclusions.
+Choose Folder.
+Add the C:/ drive as an exclusion.
+Log in as Administrator again to ensure changes are applied.
+Install Atomic Red Team
+
+Insert the script to download Atomic Red Team here. Ensure all dependencies are allowed during the installation process by confirming prompts with Yes.
+Using Atomic Red Team
+
+Navigate to the C:/ drive and locate the Atomics folder.
+Review the MITRE ATT&CK Framework IDs available for testing.
+Identify and focus on frameworks specific to the industry of the organization you're targeting.
+Use the following command in the Command Prompt to execute tests:
+cmd
+Copy code
+Invoke-AtomicTest <MITRE-Id-#>
+If no data appears in Wazuh, Splunk, or ELK telemetry, this indicates a gap in visibility for that specific activity.
