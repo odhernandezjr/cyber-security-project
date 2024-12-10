@@ -2,3 +2,44 @@ This guide provides detailed instructions for setting up a cybersecurity-focused
 The project is designed to include a SOAR platform, a SIEM, and a log management system, all working together to monitor an Active Directory computer and a paired machine on the same network. 
 The setup is divided into multiple parts, which should be followed sequentially to ensure proper connectivity and integration across all components. 
 AWS will be used as the hosting platform for this lab. While the AWS free tier may not fully support the entire setup, it can be completed in short sprints to generate log data at a relatively low cost.
+
+
+AWS VPC and Security Group Setup
+•	Create a VPC on AWS: Begin by creating a Virtual Private Cloud (VPC) in AWS.
+•	Using default auto-creation: The default auto-creation method is the easiest way to get started.
+•	Set up a Security Group: After creating the VPC, set up a security group, which acts as a built-in firewall. This firewall restricts access to specified IP addresses, ports, and file types.
+•	Server Deployment: Deploy key infrastructure components within the VPC, such as Wazuh, TheHive, Active Directory, and a Windows Server 2019 instance. These components will be detailed in separate documentation.
+•	Servers to create: Ubuntu server with Sysmon, TheHive server, Wazuh server, Windows server 2019 with Active directory, windows server 2019 to network with active directory server
+•	Network port allowances
+o	Wazuh
+o	TheHive
+o	Active Directory
+o	Ubuntu w/Sysmon
+o	Windows server w/Sysmon 
+________________________________________
+Automation with Shuffle and Wazuh
+•	Sysmon Deployment: Sysmon is installed on both Windows and Active Directory servers to monitor system activity.
+•	Incident Workflow:
+1.	When specific incidents are detected, Sysmon triggers notifications that are sent to Wazuh.
+2.	Wazuh logs the incident and uses a webhook to forward details to Shuffle.
+3.	Shuffle parses the log into a readable format and sends it to VirusTotal to determine if the file in question is known to be malicious.
+4.	If the file is identified as malicious, the information is sent to TheHive, where a ticket is created for further investigation.
+5.	Depending on the event, Shuffle can also send an email to a designated address to prompt specific actions.
+________________________________________
+ 
+•	Integration with Windows Server 2019: Atomic Red Team is used on the Windows Server 2019 instance to simulate various attack scenarios based on the MITRE ATT&CK framework.
+•	Attack Simulation Process:
+1.	Choose the type of attack to simulate.
+2.	After the attack is executed, check whether it generates a log in Wazuh.
+3.	Analyze logs for detailed information about the attack. If no logs are generated, it indicates the attack could go undetected.
+4.	Create new Sysmon and Wazuh triggers to ensure future tracking of similar incidents.
+________________________________________
+Active Directory Brute-Force Attack 
+•	Attack Setup:
+1.	The Active Directory server is configured to allow Remote Desktop access for specific users targeted in the brute-force simulation.
+2.	Using Crowbar, simulate a brute-force attack on a single username.
+3.	A customized, smaller dictionary file based on rockyou.txt is used, which includes a known password to minimize the time required to gain access.
+•	Log Analysis:
+1.	After a successful attack, search the Wazuh dashboard for logon attempts, including unsuccessful attempts, timestamps, and source IP addresses.
+2.	Analyze Windows Event Logs to identify patterns and potential points of compromise.
+3.	Use this information to enhance detection rules and improve system security.
