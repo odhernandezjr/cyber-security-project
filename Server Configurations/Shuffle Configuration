@@ -1,0 +1,69 @@
+Shuffle Configuration for Windows
+1. Create a New Workflow
+Open Shuffle and create a new workflow.
+Search for Webhook in the Triggers section and add it to the workflow.
+Name the workflow and copy the Webhook URI.
+2. Configure Webhook in Wazuh Manager
+Open the Wazuh Manager's configuration file: /var/ossec/etc/ossec.conf.
+Paste the Webhook URI into the <ossec_config> section.
+Ensure the integration tag matches the formatting of other tags.
+Maintain consistent spacing as in the existing configuration.
+Set the <hook_url> tag to the copied Shuffle Webhook URI.
+Adjust the <level> tag:
+Set it to a specific rule ID for this project: <rule_id>100002</rule_id>.
+This ensures only alerts matching the rule are sent to Shuffle.
+Restart the Wazuh Manager service to apply changes.
+3. Trigger Workflow
+Log in to the Windows Server 2019 instance.
+Execute the Mimikatz file to generate an alert.
+Check Shuffle:
+Click the running man icon at the bottom of the page to see the triggered alert.
+Test the workflow by reviewing the Webhook Event and inspecting Execution Arguments for details sent by Wazuh.
+4. Parse Alert Data
+Click the Change Me icon in Shuffle.
+Update the action:
+Replace Repeat Back to Me with Regex Capture Group.
+Under Input Data:
+Add a new field by clicking the + button and select Hash from the execution arguments.
+Use this to parse the SHA-256 hash from the alert data.
+Use Regex:
+Extract the SHA-256 hash using a regular expression. If needed, generate the regex by pasting the SHA-256 string into a tool like ChatGPT.
+5. Validate Workflow
+Click the Show Executions button and refresh the workflow.
+Expand the results to verify the parsed hash is accurate.
+6. Add VirusTotal Integration
+Search for VirusTotal in the Shuffle application list and add it to the workflow.
+After the SHA-256 regex step, configure VirusTotal:
+Wait for actions to populate and select Get a Hash Report.
+Authenticate by pasting your VirusTotal API key.
+Update the API request:
+Modify the /reports? endpoint to /{ID} as specified in VirusTotal's documentation:
+Fork the VirusTotal app:
+Open the app settings and click Fork to create a customizable version.
+Under the GET action for hash reports, update the URL path from /files/report? to /{ID}.
+Submit and save the changes to the forked app.
+Run the workflow again to verify VirusTotal results:
+Check results under results/body/data/attributes/last_analysis_stats to review findings (e.g., harmless, malicious).
+7. Add TheHive Integration
+Add TheHive to the workflow after the VirusTotal step.
+
+Authenticate:
+
+Paste your TheHive API key and enter the public IP and port (9000) for your instance.
+Populate alert fields:
+
+Date: Use the utcTime execution argument to timestamp the alert.
+Description: Example:
+Mimikatz detected on host: <field: computer> by user: <field: user>.
+Severity: Set to 2.
+Source: Specify Wazuh.
+Tags: Use relevant tags, e.g., ["T1003", "Credential Dumping"].
+Title: Include field-based details, such as hostname and process ID.
+Ensure the firewall allows inbound IPv4 traffic on port 9000.
+
+8. Add Email Notifications
+Include the Email application in the workflow.
+Configure email details:
+Recipient: Enter the desired email address.
+Subject: For example, Mimikatz Detected.
+Body: Use field-based data to include alert details.
