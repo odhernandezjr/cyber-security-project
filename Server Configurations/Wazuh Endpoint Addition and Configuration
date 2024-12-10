@@ -1,0 +1,13 @@
+1. Adding an Endpoint
+Access the Wazuh Dashboard.
+Navigate to the Add Agent section.
+Provide the server address:
+Enter the Wazuh public IP address.
+Follow the instructions to generate the installation command:
+Copy the generated command and execute it on the endpoint's shell. This will download and install the Wazuh agent.
+Start the Wazuh service on the endpoint:
+Run the following command in the endpoint shell:
+cmd
+Copy code
+net start wazuhsvc
+Open the Services application and verify that the "Wazuh Agent" service is running.
