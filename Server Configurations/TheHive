@@ -1,0 +1,61 @@
+Configuration Details
+Cassandra Configuration:
+
+Edit cassandra.yaml:
+bash
+Copy code
+nano /etc/cassandra/cassandra.yaml
+Update the following:
+cluster_name: "<name>"
+listen_address: <public_IP>
+rpc_address: <public_IP>
+seeds: "<public_IP>:7000"
+Restart Cassandra:
+bash
+Copy code
+systemctl stop cassandra.service
+rm -rf /var/lib/cassandra/*
+systemctl start cassandra.service
+systemctl status cassandra.service
+Elasticsearch Configuration:
+
+Edit elasticsearch.yml:
+bash
+Copy code
+nano /etc/elasticsearch/elasticsearch.yml
+Update and uncomment the following:
+cluster.name: <cluster_name>
+node.name: node-1
+network.host: <public_or_private_IP>
+http.port: 9200
+cluster.initial_master_nodes: ["node-1"]
+Restart Elasticsearch:
+bash
+Copy code
+systemctl start elasticsearch
+systemctl enable elasticsearch
+systemctl status elasticsearch
+TheHive Configuration:
+
+Ensure ownership:
+bash
+Copy code
+chown -R thehive:thehive /opt/thp
+Edit application.conf:
+bash
+Copy code
+nano /etc/thehive/application.conf
+Configure:
+hostname = ["<public_IP>"]
+application.baseUrl = "http://<public_IP>:9000"
+Start TheHive:
+bash
+Copy code
+systemctl start thehive
+systemctl enable thehive
+Access TheHive Dashboard:
+
+URL: http://<public_IP>:9000
+Credentials:
+Username: admin@thehive.local
+Password: secret
