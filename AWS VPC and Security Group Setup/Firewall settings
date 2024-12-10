@@ -1,0 +1,9 @@
+
+Refined and Professional Version
+1. Set Up Firewall
+Allow SSH (TCP):
+Source Ports: (Home IP and Kali Purple IP)
+Web Traffic (TCP 443):
+Temporary availability for setup.
+RDP (TCP 3389):
+For remote desktop access to Windows environments.
