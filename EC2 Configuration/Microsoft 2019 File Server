@@ -1,0 +1,26 @@
+ ec2
+  1. name : Home
+  2. os: Microsoft 2019 datacenter edition 
+  3. instance type: t3.large
+  4. storage: 50gb
+Sysmon Installation
+  1.1 Download Sysmon
+    Access the Sysmon download page on Microsoft's website:
+    Sysmon - Sysinternals.
+  1.2 Download the Sysmon Configuration File
+    Navigate to the Sysmon configuration repository.
+    Locate the sysmon.xml file:
+    Open the file by clicking on it.
+    On the next page, click Raw.
+    Save the file by right-clicking on the raw view and selecting Save As.
+  1.3 Installing and Configuring Sysmon
+    Extract the downloaded Sysmon .zip file to a directory of your choice.
+    Move the downloaded sysmon.xml configuration file to the same directory as the Sysmon executable.
+    Open PowerShell as an administrator.
+    Navigate to the directory where Sysmon is located and run the following command to install Sysmon with the configuration file:
+    powershell
+    Copy code
+      .\Sysmon64.exe -i .\sysmonconfig.xml
+  Verify the Sysmon service is running:
+     Open the Services application (search for "Services" in the Start menu).
+     Look for the "Sysmon" service and confirm its status is Running.
