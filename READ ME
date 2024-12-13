@@ -8,10 +8,10 @@ AWS VPC and Security Group Setup
 •	Create a VPC on AWS: Begin by creating a Virtual Private Cloud (VPC) in AWS.
 •	Using default auto-creation: The default auto-creation method is the easiest way to get started.
 •	Set up a Security Group: After creating the VPC, set up a security group, which acts as a built-in firewall. This firewall restricts access to specified IP addresses, ports, and file types.
-•	Server Deployment: Deploy key infrastructure components within the VPC, such as Wazuh, TheHive, Active Directory, and a Windows Server 2019 instance. These components will be detailed in separate documentation.
-•	Servers to create: Ubuntu server with Sysmon, TheHive server, Wazuh server, Windows server 2019 with Active directory, windows server 2019 to network with active directory server
+•	Server Deployment: Deploy key infrastructure components within the VPC, such as Wazuh, TheHive, Active Directory, and a Windows 2019 file server. These components will be detailed in separate documentation.
+•	Servers to create: Ubuntu server with Sysmon, TheHive server, Wazuh server, Windows server 2019 with Active directory, and a Windows 2019 file server to network with active directory server
 •	Network port allowances
-o	Wazuh
+o	Wazuh 
 o	TheHive
 o	Active Directory
 o	Ubuntu w/Sysmon
@@ -27,7 +27,7 @@ Automation with Shuffle and Wazuh
 5.	Depending on the event, Shuffle can also send an email to a designated address to prompt specific actions.
 ________________________________________
  
-•	Integration with Windows Server 2019: Atomic Red Team is used on the Windows Server 2019 instance to simulate various attack scenarios based on the MITRE ATT&CK framework.
+•	Integration with Windows 2019 file server: Atomic Red Team is used on the Windows 2019 file server to simulate various attack scenarios based on the MITRE ATT&CK framework.
 •	Attack Simulation Process:
 1.	Choose the type of attack to simulate.
 2.	After the attack is executed, check whether it generates a log in Wazuh.
