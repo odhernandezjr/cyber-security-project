@@ -1,0 +1,7 @@
+Set Up Firewall
+  Allow SSH (TCP): 22
+  Source Ports: <Home IP> and <attacker pc IP>
+  Web Traffic (TCP): 443
+  RDP (TCP): 3389 
+This is only to ensure remote access to servers in a closed environment
+You wil be including more ports as the project continues but this is where to start
