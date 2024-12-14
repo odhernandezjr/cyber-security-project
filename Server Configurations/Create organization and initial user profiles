@@ -1,33 +1,36 @@
+Create organization and initial user profiles
+
 Log in to TheHive Dashboard
-Access your TheHive dashboard and log in using your credentials.
-2. Create an Organization
-Click the "+" icon in the top left corner.
-Fill out the Name and Description fields for the new organization.
-3. Add Users to the Organization
+  Access your TheHive dashboard and log in using your credentials.
+  Create an Organization
+    Click the "+" icon in the top left corner.
+    Fill out the Name and Description fields for the new organization.
+    Add Users to the Organization
 Open the newly created organization and select Add User.
 
 For this project, create two users: one for yourself and one for API access.
-Follow the steps below for user creation details:
-User Details:
 
-Type:
-First user: normal
-Second user (for API): service
-Login:
-First user: <name>@test.com
-Second user: shuffle@test.com
-Name:
-First user: <name>
-Second user: SOAR
-Profile:
-First user: analyst
-Second user: While a custom profile should follow the principle of least privilege, for now, assign analyst.
-Set Passwords:
+Follow the steps below for user creation details:
+  User Details:
+    Type:
+      First user: normal
+      Second user (for API): service
+    Login:
+      First user: <name>@test.com
+      Second user: shuffle@test.com
+  Name:
+      First user: <name>
+      Second user: SOAR
+  Profile:
+      First user: analyst
+      Second user: While a custom profile should follow the principle of least privilege, for now, assign analyst.
+      Set Passwords:
 
 Hover over the <name> account, click on the account, and select Set a New Password.
 For the shuffle account, also generate an API key:
 Navigate to the account settings for shuffle.
 Generate and copy the API key.
 Save the API key securely for future use (e.g., during Shuffle configuration). Avoid misplacing the key to prevent unauthorized use.
-4. Log in to the <name> Account
+
+Log in to the <name> Account
 Use the credentials created for the <name> account to log in to TheHive.
