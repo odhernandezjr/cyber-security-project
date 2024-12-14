@@ -1,5 +1,5 @@
 Wazuh on EC2
-    EC2 Setup:
+  EC2 Setup:
       Name: Wazuh
       OS: ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20240927
       Instance Type: c5.xlarge
@@ -7,29 +7,26 @@ Wazuh on EC2
 
   Installation:
       SSH into the Ubuntu server on AWS.
-      Run:
-        bash  Copy code
-            apt-get update && apt upgrade -y
-      Download and install Wazuh:
-        bash Copy code
-            curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh && sudo bash ./wazuh-install.sh -a
-              Note the default Wazuh credentials:
-              User: admin
-              Password: <Password>
+      Run:bash  Copy code
+        apt-get update && apt upgrade -y
+      Download and install Wazuh:bash Copy code
+        curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh && sudo bash ./wazuh-install.sh -a
+      Note the default Wazuh credentials:
+        User: admin
+        Password: <Password>
 
     Configuration:
-      Extract configuration files:
-        bash Copy code
-          tar -xvf wazuh-install-files.tar
-      Retrieve passwords:
-        bash Copy code
-          cat <path_to_files>/wazuh-install-files/wazuh-passwords.txt
+      Extract configuration files: bash Copy code
+        tar -xvf wazuh-install-files.tar
+      Retrieve passwords: bash Copy code
+        cat <path_to_files>/wazuh-install-files/wazuh-passwords.txt
       Admin user credentials:
-          Username: admin
-          Password: <password>
+        Username: admin
+        Password: <password>
       API user credentials:
-          Username: wazuh-wui
-          Password: <Password>
-      Access the Wazuh Dashboard:
+        Username: wazuh-wui
+        Password: <Password>
 
-Use the public IP of the Wazuh EC2 instance in a browser.
+    Access the Wazuh Dashboard:
+
+    Use the public IP of the Wazuh EC2 instance in a browser.
